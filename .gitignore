@@ -1,0 +1,16 @@
+# Virtual environment
+.venv/
+
+# Model weights and checkpoints
+checkpoints/
+*.pt
+*.pth
+
+# Processed data
+data/processed/
+
+# Python and Jupyter clutter
+__pycache__/
+.ipynb_checkpoints/
+
+.env
