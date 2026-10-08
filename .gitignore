@@ -13,4 +13,5 @@ data/processed/
 __pycache__/
 .ipynb_checkpoints/
 
-.env
+.env.venv/
+__pycache__/
