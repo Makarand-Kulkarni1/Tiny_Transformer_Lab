@@ -1,0 +1,134 @@
+{"question": "average price in the kitchen category", "sql": "SELECT AVG(price) FROM products WHERE category = 'kitchen'"}
+{"question": "count the clothing orders placed by customers in mumbai", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'clothing' AND customers.city = 'mumbai'"}
+{"question": "count the customers from nagpur", "sql": "SELECT COUNT(*) FROM customers WHERE city = 'nagpur'"}
+{"question": "count the kitchen orders placed by customers in kolkata", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'kitchen' AND customers.city = 'kolkata'"}
+{"question": "count the orders made after 2026-01-27", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-01-27'"}
+{"question": "count the orders made after 2026-01-29", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-01-29'"}
+{"question": "count the orders made after 2026-02-14", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-14'"}
+{"question": "count the orders made after 2026-02-15", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-15'"}
+{"question": "count the orders made after 2026-02-18", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-18'"}
+{"question": "count the orders made after 2026-03-17", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-03-17'"}
+{"question": "count the orders made after 2026-03-19", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-03-19'"}
+{"question": "count the orders made after 2026-03-25", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-03-25'"}
+{"question": "count the orders made after 2026-04-12", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-04-12'"}
+{"question": "count the orders made after 2026-05-04", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-04'"}
+{"question": "count the orders made after 2026-05-09", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-09'"}
+{"question": "count the orders made after 2026-05-15", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-15'"}
+{"question": "count the orders made after 2026-05-25", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-25'"}
+{"question": "count the orders made after 2026-05-30", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-30'"}
+{"question": "count the orders made after 2026-06-06", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-06'"}
+{"question": "count the orders made after 2026-06-14", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-14'"}
+{"question": "count the orders made after 2026-06-21", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-21'"}
+{"question": "count the orders made by anika", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'anika'"}
+{"question": "count the orders made by pooja", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'pooja'"}
+{"question": "count the orders made by sana", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'sana'"}
+{"question": "count the orders made by tara", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'tara'"}
+{"question": "count the stationery orders for every city", "sql": "SELECT customers.city, COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'stationery' GROUP BY customers.city"}
+{"question": "count the stationery orders placed by customers in mumbai", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'stationery' AND customers.city = 'mumbai'"}
+{"question": "give me the price of the earphones", "sql": "SELECT price FROM products WHERE name = 'earphones'"}
+{"question": "give me the price of the yoyo", "sql": "SELECT price FROM products WHERE name = 'yoyo'"}
+{"question": "how many clothing orders came from mumbai?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'clothing' AND customers.city = 'mumbai'"}
+{"question": "how many customers live in nagpur?", "sql": "SELECT COUNT(*) FROM customers WHERE city = 'nagpur'"}
+{"question": "how many items in total did asha order?", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'asha'"}
+{"question": "how many items in total did farhan order?", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'farhan'"}
+{"question": "how many items in total did isha order?", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'isha'"}
+{"question": "how many items in total did rohan order?", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'rohan'"}
+{"question": "how many kitchen orders came from kolkata?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'kitchen' AND customers.city = 'kolkata'"}
+{"question": "how many orders did anika place?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'anika'"}
+{"question": "how many orders did pooja place?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'pooja'"}
+{"question": "how many orders did sana place?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'sana'"}
+{"question": "how many orders did tara place?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'tara'"}
+{"question": "how many orders were placed after 2026-01-27?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-01-27'"}
+{"question": "how many orders were placed after 2026-01-29?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-01-29'"}
+{"question": "how many orders were placed after 2026-02-14?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-14'"}
+{"question": "how many orders were placed after 2026-02-15?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-15'"}
+{"question": "how many orders were placed after 2026-02-18?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-18'"}
+{"question": "how many orders were placed after 2026-03-17?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-03-17'"}
+{"question": "how many orders were placed after 2026-03-19?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-03-19'"}
+{"question": "how many orders were placed after 2026-03-25?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-03-25'"}
+{"question": "how many orders were placed after 2026-04-12?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-04-12'"}
+{"question": "how many orders were placed after 2026-05-04?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-04'"}
+{"question": "how many orders were placed after 2026-05-09?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-09'"}
+{"question": "how many orders were placed after 2026-05-15?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-15'"}
+{"question": "how many orders were placed after 2026-05-25?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-25'"}
+{"question": "how many orders were placed after 2026-05-30?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-30'"}
+{"question": "how many orders were placed after 2026-06-06?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-06'"}
+{"question": "how many orders were placed after 2026-06-14?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-14'"}
+{"question": "how many orders were placed after 2026-06-21?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-21'"}
+{"question": "how many orders were placed after 2026-06-27?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-27'"}
+{"question": "how many stationery orders came from mumbai?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'stationery' AND customers.city = 'mumbai'"}
+{"question": "how many stationery orders were placed in each city?", "sql": "SELECT customers.city, COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'stationery' GROUP BY customers.city"}
+{"question": "how much do kitchen products cost on average?", "sql": "SELECT AVG(price) FROM products WHERE category = 'kitchen'"}
+{"question": "how much does earphones cost?", "sql": "SELECT price FROM products WHERE name = 'earphones'"}
+{"question": "how much does yoyo cost?", "sql": "SELECT price FROM products WHERE name = 'yoyo'"}
+{"question": "list all products in the toys category", "sql": "SELECT name FROM products WHERE category = 'toys'"}
+{"question": "list the customers who bought pan", "sql": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'pan'"}
+{"question": "list the customers who bought toaster", "sql": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'toaster'"}
+{"question": "list the products ordered by esha", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'esha'"}
+{"question": "list the products ordered by pooja", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'pooja'"}
+{"question": "list the products ordered by qadir", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'qadir'"}
+{"question": "list the products ordered by riya", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'riya'"}
+{"question": "list the products priced above 1150", "sql": "SELECT name FROM products WHERE price > 1150"}
+{"question": "list the products priced above 1700", "sql": "SELECT name FROM products WHERE price > 1700"}
+{"question": "list the products priced above 550", "sql": "SELECT name FROM products WHERE price > 550"}
+{"question": "list the products priced above 700", "sql": "SELECT name FROM products WHERE price > 700"}
+{"question": "number of stationery orders per city", "sql": "SELECT customers.city, COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'stationery' GROUP BY customers.city"}
+{"question": "show the names of products with a price greater than 1150", "sql": "SELECT name FROM products WHERE price > 1150"}
+{"question": "show the names of products with a price greater than 1700", "sql": "SELECT name FROM products WHERE price > 1700"}
+{"question": "show the names of products with a price greater than 550", "sql": "SELECT name FROM products WHERE price > 550"}
+{"question": "show the names of products with a price greater than 700", "sql": "SELECT name FROM products WHERE price > 700"}
+{"question": "show the names of toys products", "sql": "SELECT name FROM products WHERE category = 'toys'"}
+{"question": "sum the quantities ordered by asha", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'asha'"}
+{"question": "sum the quantities ordered by farhan", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'farhan'"}
+{"question": "sum the quantities ordered by isha", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'isha'"}
+{"question": "sum the quantities ordered by rohan", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'rohan'"}
+{"question": "what has esha bought?", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'esha'"}
+{"question": "what has pooja bought?", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'pooja'"}
+{"question": "what has qadir bought?", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'qadir'"}
+{"question": "what has riya bought?", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'riya'"}
+{"question": "what is the average price of kitchen products?", "sql": "SELECT AVG(price) FROM products WHERE category = 'kitchen'"}
+{"question": "what is the number of clothing orders from mumbai customers?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'clothing' AND customers.city = 'mumbai'"}
+{"question": "what is the number of customers in nagpur?", "sql": "SELECT COUNT(*) FROM customers WHERE city = 'nagpur'"}
+{"question": "what is the number of kitchen orders from kolkata customers?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'kitchen' AND customers.city = 'kolkata'"}
+{"question": "what is the number of orders from anika?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'anika'"}
+{"question": "what is the number of orders from pooja?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'pooja'"}
+{"question": "what is the number of orders from sana?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'sana'"}
+{"question": "what is the number of orders from tara?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'tara'"}
+{"question": "what is the number of orders since 2026-01-27?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-01-27'"}
+{"question": "what is the number of orders since 2026-01-29?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-01-29'"}
+{"question": "what is the number of orders since 2026-02-14?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-14'"}
+{"question": "what is the number of orders since 2026-02-15?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-15'"}
+{"question": "what is the number of orders since 2026-02-18?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-18'"}
+{"question": "what is the number of orders since 2026-03-17?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-03-17'"}
+{"question": "what is the number of orders since 2026-03-19?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-03-19'"}
+{"question": "what is the number of orders since 2026-03-25?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-03-25'"}
+{"question": "what is the number of orders since 2026-04-12?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-04-12'"}
+{"question": "what is the number of orders since 2026-05-04?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-04'"}
+{"question": "what is the number of orders since 2026-05-09?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-09'"}
+{"question": "what is the number of orders since 2026-05-15?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-15'"}
+{"question": "what is the number of orders since 2026-05-25?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-25'"}
+{"question": "what is the number of orders since 2026-05-30?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-30'"}
+{"question": "what is the number of orders since 2026-06-06?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-06'"}
+{"question": "what is the number of orders since 2026-06-14?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-14'"}
+{"question": "what is the number of orders since 2026-06-21?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-21'"}
+{"question": "what is the number of orders since 2026-06-27?", "sql": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-27'"}
+{"question": "what is the number of stationery orders from mumbai customers?", "sql": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'stationery' AND customers.city = 'mumbai'"}
+{"question": "what is the price of earphones?", "sql": "SELECT price FROM products WHERE name = 'earphones'"}
+{"question": "what is the price of yoyo?", "sql": "SELECT price FROM products WHERE name = 'yoyo'"}
+{"question": "what is the total quantity ordered by asha?", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'asha'"}
+{"question": "what is the total quantity ordered by farhan?", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'farhan'"}
+{"question": "what is the total quantity ordered by isha?", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'isha'"}
+{"question": "what is the total quantity ordered by rohan?", "sql": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'rohan'"}
+{"question": "which customers ordered pan?", "sql": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'pan'"}
+{"question": "which customers ordered toaster?", "sql": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'toaster'"}
+{"question": "which products are in toys?", "sql": "SELECT name FROM products WHERE category = 'toys'"}
+{"question": "which products cost more than 1150?", "sql": "SELECT name FROM products WHERE price > 1150"}
+{"question": "which products cost more than 1700?", "sql": "SELECT name FROM products WHERE price > 1700"}
+{"question": "which products cost more than 550?", "sql": "SELECT name FROM products WHERE price > 550"}
+{"question": "which products cost more than 700?", "sql": "SELECT name FROM products WHERE price > 700"}
+{"question": "which products did esha order?", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'esha'"}
+{"question": "which products did pooja order?", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'pooja'"}
+{"question": "which products did qadir order?", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'qadir'"}
+{"question": "which products did riya order?", "sql": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'riya'"}
+{"question": "who has ordered the pan?", "sql": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'pan'"}
+{"question": "who has ordered the toaster?", "sql": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'toaster'"}
