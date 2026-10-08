@@ -1,5 +1,9 @@
+@"
 # Virtual environment
 .venv/
+
+# Secrets
+.env
 
 # Model weights and checkpoints
 checkpoints/
@@ -12,6 +16,4 @@ data/processed/
 # Python and Jupyter clutter
 __pycache__/
 .ipynb_checkpoints/
-
-.env.venv/
-__pycache__/
+"@ | Set-Content .gitignore
