@@ -13,6 +13,37 @@ class GPTConfig:
     n_embd: int = 128        # size of each token's vector (C)
     dropout: float = 0.1     # fraction of values randomly zeroed during training
 
+class Head(nn.Module):
+    """One head of causal self-attention."""
+
+    def __init__(self, config, head_size):
+        super().__init__()
+        self.key = nn.Linear(config.n_embd, head_size, bias=False)
+        self.query = nn.Linear(config.n_embd, head_size, bias=False)
+        self.value = nn.Linear(config.n_embd, head_size, bias=False)
+        # lower-triangular matrix of ones: the causal mask
+        self.register_buffer("mask", torch.tril(torch.ones(config.block_size, config.block_size)))
+        self.dropout = nn.Dropout(config.dropout)
+
+    def forward(self, x):
+        B, T, C = x.shape
+        k = self.key(x)       # (B, T, head_size)
+        q = self.query(x)     # (B, T, head_size)
+        v = self.value(x)     # (B, T, head_size)
+
+        # 1: score every query against every key, scaled
+        wei = (q @ k.transpose(-2, -1)) * (k.shape[-1] ** -0.5)      # (B, T, T)
+
+        # 2: causal mask: forbidden positions get -infinity
+        wei = wei.masked_fill(self.mask[:T, :T] == 0, float("-inf"))
+
+        # 3: softmax turns each row into weights that sum to 1, then dropout
+        wei = torch.softmax(wei, dim=-1)
+        wei = self.dropout(wei)
+
+        # 4: blend the values using those weights
+        out = wei @ v                                                 # (B, T, head_size)
+        return out
 
 class TinyGPT(nn.Module):
     def __init__(self, config):
