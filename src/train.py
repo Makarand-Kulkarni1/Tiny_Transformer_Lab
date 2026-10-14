@@ -22,6 +22,7 @@ DATA_DIRS = {"v1": "raw", "v2": "v2"}         # which folder under data/ each ve
 class TrainConfig:
     run_name: str = "run"
     data: str = "v1"
+    augment: float = 0.0      # chance of swapping each word value for a random word (0 = off)
     max_steps: int = 3000
     batch_size: int = 32
     max_lr: float = 1e-3
@@ -99,10 +100,12 @@ def train(cfg):
     val_rows = load_jsonl("val", cfg.data)
     test_rows = load_jsonl("test", cfg.data)   # only used to size the context window
 
-    # the context window must fit the longest example in any split
+    # the context window must fit the longest example in any split; augmented random
+    # words can be longer than real ones, so leave extra room when augmenting
     longest = max(len(r["question"]) + len(r["sql"]) + 2 for r in train_rows + val_rows + test_rows)
-    block_size = ((longest + 15) // 16) * 16
-    print(f"data: {cfg.data} | train {len(train_rows)}, val {len(val_rows)} | "
+    headroom = 40 if cfg.augment > 0 else 0
+    block_size = ((longest + headroom + 15) // 16) * 16
+    print(f"data: {cfg.data} | train {len(train_rows)}, val {len(val_rows)} | augment {cfg.augment} | "
           f"longest example {longest} -> block_size {block_size}")
 
     # the tokenizer is built from training text plus every lowercase letter and digit,
@@ -111,10 +114,10 @@ def train(cfg):
     tok = CharTokenizer.build(texts + [string.ascii_lowercase + string.digits])
 
     collate_fn = lambda batch: collate(batch, tok.pad_id)
-    train_loader = DataLoader(SQLDataset(train_rows, tok), batch_size=cfg.batch_size,
-                              shuffle=True, collate_fn=collate_fn)
+    train_loader = DataLoader(SQLDataset(train_rows, tok, augment_p=cfg.augment),
+                              batch_size=cfg.batch_size, shuffle=True, collate_fn=collate_fn)
     val_loader = DataLoader(SQLDataset(val_rows, tok), batch_size=64,
-                            shuffle=False, collate_fn=collate_fn)
+                            shuffle=False, collate_fn=collate_fn)    # val is never augmented
 
     model_cfg = GPTConfig(vocab_size=tok.vocab_size, block_size=block_size, n_layer=cfg.n_layer,
                           n_head=cfg.n_head, n_embd=cfg.n_embd, dropout=cfg.dropout)
