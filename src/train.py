@@ -2,6 +2,7 @@ import argparse
 import json
 import math
 import random
+import string
 import time
 from dataclasses import dataclass, asdict
 from pathlib import Path
@@ -14,11 +15,13 @@ from src.model import GPTConfig, TinyGPT
 from src.tokenizer import CharTokenizer, SPECIALS
 
 ROOT = Path(__file__).resolve().parents[1]   # the project folder
+DATA_DIRS = {"v1": "raw", "v2": "v2"}         # which folder under data/ each version lives in
 
 
 @dataclass
 class TrainConfig:
     run_name: str = "run"
+    data: str = "v1"
     max_steps: int = 3000
     batch_size: int = 32
     max_lr: float = 1e-3
@@ -35,8 +38,8 @@ class TrainConfig:
     dropout: float = 0.1
 
 
-def load_jsonl(name):
-    path = ROOT / "data" / "raw" / f"{name}.jsonl"
+def load_jsonl(name, data="v1"):
+    path = ROOT / "data" / DATA_DIRS[data] / f"{name}.jsonl"
     with open(path, encoding="utf-8") as f:
         return [json.loads(line) for line in f]
 
@@ -92,8 +95,20 @@ def train(cfg):
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print("device:", device)
 
-    train_rows, val_rows = load_jsonl("train"), load_jsonl("val")
-    tok = CharTokenizer.build([r["question"] for r in train_rows] + [r["sql"] for r in train_rows])
+    train_rows = load_jsonl("train", cfg.data)
+    val_rows = load_jsonl("val", cfg.data)
+    test_rows = load_jsonl("test", cfg.data)   # only used to size the context window
+
+    # the context window must fit the longest example in any split
+    longest = max(len(r["question"]) + len(r["sql"]) + 2 for r in train_rows + val_rows + test_rows)
+    block_size = ((longest + 15) // 16) * 16
+    print(f"data: {cfg.data} | train {len(train_rows)}, val {len(val_rows)} | "
+          f"longest example {longest} -> block_size {block_size}")
+
+    # the tokenizer is built from training text plus every lowercase letter and digit,
+    # so a held-out value with a rare letter never becomes <unk>
+    texts = [r["question"] for r in train_rows] + [r["sql"] for r in train_rows]
+    tok = CharTokenizer.build(texts + [string.ascii_lowercase + string.digits])
 
     collate_fn = lambda batch: collate(batch, tok.pad_id)
     train_loader = DataLoader(SQLDataset(train_rows, tok), batch_size=cfg.batch_size,
@@ -101,8 +116,8 @@ def train(cfg):
     val_loader = DataLoader(SQLDataset(val_rows, tok), batch_size=64,
                             shuffle=False, collate_fn=collate_fn)
 
-    model_cfg = GPTConfig(vocab_size=tok.vocab_size, n_layer=cfg.n_layer, n_head=cfg.n_head,
-                          n_embd=cfg.n_embd, dropout=cfg.dropout)
+    model_cfg = GPTConfig(vocab_size=tok.vocab_size, block_size=block_size, n_layer=cfg.n_layer,
+                          n_head=cfg.n_head, n_embd=cfg.n_embd, dropout=cfg.dropout)
     model = TinyGPT(model_cfg).to(device)
     print("parameters:", sum(p.numel() for p in model.parameters()))
 
