@@ -1,14 +1,19 @@
 import argparse
 import json
+import random
 import time
 from collections import defaultdict
+from pathlib import Path
 
 import torch
 
 from src.data.make_dataset import skeleton
 from src.data.make_db import build_db
+from src.data.make_db_v2 import build_db_v2
 from src.data.sql_runner import run_query, same_result
 from src.train import ROOT, load_jsonl, load_model
+
+DB_BUILDERS = {"v1": build_db, "v2": build_db_v2}
 
 
 @torch.no_grad()
@@ -36,7 +41,7 @@ def evaluate_split(model, tok, rows, conn, device):
             "seconds": seconds,
             "n_tokens": len(pred) + 1,       # characters generated, plus <eos>
         })
-        if i % 25 == 0:
+        if i % 100 == 0:
             print(f"  {i}/{len(rows)} done")
     return results
 
@@ -62,42 +67,56 @@ def per_template(results):
     return {key: summarize(group) for key, group in sorted(groups.items())}
 
 
+def short(key):
+    """Drop the repeated JOIN conditions so template labels are readable."""
+    return (key.replace(" ON orders.customer_id = customers.id", "")
+               .replace(" ON orders.product_id = products.id", ""))
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--run_name", default="base")
+    parser.add_argument("--data", default="v1", choices=["v1", "v2"])
     parser.add_argument("--split", default="val", choices=["train", "val", "test"])
-    parser.add_argument("--ckpt", default=None, help="path to a checkpoint (default: best.pt of the run)")
+    parser.add_argument("--ckpt", default=None, help="checkpoint path (default: best.pt of the run)")
+    parser.add_argument("--limit", type=int, default=0, help="evaluate a random subset of this size")
     args = parser.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    ckpt_path = args.ckpt or ROOT / "checkpoints" / args.run_name / "best.pt"
+    ckpt_path = Path(args.ckpt) if args.ckpt else ROOT / "checkpoints" / args.run_name / "best.pt"
     model, tok = load_model(ckpt_path, device)
     n_params = sum(p.numel() for p in model.parameters())
-    size_mb = ckpt_path.stat().st_size / 1e6 if hasattr(ckpt_path, "stat") else None
+    size_mb = ckpt_path.stat().st_size / 1e6
     print(f"device: {device} | parameters: {n_params} | checkpoint: {ckpt_path}")
 
     # IMPORTANT: this must be the same database the dataset was generated against
-    conn = build_db()
-    rows = load_jsonl(args.split)
-    print(f"evaluating {len(rows)} examples from the {args.split} split")
+    conn = DB_BUILDERS[args.data]()
+    rows = load_jsonl(args.split, args.data)
+    if args.limit and args.limit < len(rows):
+        rows = random.Random(0).sample(rows, args.limit)
+    print(f"evaluating {len(rows)} examples from the {args.data} {args.split} split")
 
     results = evaluate_split(model, tok, rows, conn, device)
     summary = summarize(results)
-    summary.update({"parameters": n_params, "checkpoint_mb": size_mb,
-                    "run_name": args.run_name, "split": args.split, "device": device})
     templates = per_template(results)
+    summary.update({
+        "macro_exec_accuracy": sum(s["exec_accuracy"] for s in templates.values()) / len(templates),
+        "parameters": n_params, "checkpoint_mb": size_mb, "run_name": args.run_name,
+        "data": args.data, "split": args.split, "device": device,
+    })
 
     print("\n=== overall ===")
-    print(f"execution accuracy: {summary['exec_accuracy']:.1%}")
-    print(f"exact match:        {summary['exact_match']:.1%}")
-    print(f"valid SQL:          {summary['valid_sql']:.1%}")
-    print(f"speed:              {summary['tokens_per_second']:.0f} tokens/s "
+    print(f"execution accuracy:       {summary['exec_accuracy']:.1%}")
+    print(f"macro (per-template avg): {summary['macro_exec_accuracy']:.1%}")
+    print(f"exact match:              {summary['exact_match']:.1%}")
+    print(f"valid SQL:                {summary['valid_sql']:.1%}")
+    print(f"speed:                    {summary['tokens_per_second']:.0f} tokens/s "
           f"({summary['avg_seconds']:.2f} s per question)")
 
     print("\n=== per template ===")
-    print(f"{'template':52s} {'n':>4s} {'exec':>7s} {'exact':>7s}")
+    print(f"{'template':95s} {'n':>4s} {'exec':>7s}")
     for key, s in templates.items():
-        print(f"{key[:52]:52s} {s['n']:4d} {s['exec_accuracy']:7.1%} {s['exact_match']:7.1%}")
+        print(f"{short(key)[:95]:95s} {s['n']:4d} {s['exec_accuracy']:7.1%}")
 
     failures = [r for r in results if not r["exec_correct"]]
     print(f"\n=== failures: {len(failures)} (showing up to 5) ===")
