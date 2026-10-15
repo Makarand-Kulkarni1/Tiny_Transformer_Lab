@@ -14,13 +14,21 @@ VOWELS = "aeiou"
 
 
 def random_word(rng):
-    """A fresh 3 to 12 letter word: half pronounceable, half random letters."""
-    length = rng.randint(3, 12)
-    if rng.random() < 0.5:
-        return "".join(rng.choice(CONSONANTS if i % 2 == 0 else VOWELS) for i in range(length))
-    return "".join(rng.choice(string.ascii_lowercase) for _ in range(length))
-
-
+    """A fresh 3 to 14 letter word: half pronounceable, half random letters.
+    About 12% of positions repeat the previous letter, so doubled letters
+    (like 'spinner' or 'books') appear often enough to be learned."""
+    length = rng.randint(3, 14)
+    pronounceable = rng.random() < 0.5
+    letters = []
+    for i in range(length):
+        if letters and rng.random() < 0.12:
+            letters.append(letters[-1])
+        elif pronounceable:
+            letters.append(rng.choice(CONSONANTS if i % 2 == 0 else VOWELS))
+        else:
+            letters.append(rng.choice(string.ascii_lowercase))
+    return "".join(letters)
+    
 def augment_example(question, sql, rng, p=0.8):
     """Swap each quoted word value (not dates) for a random word, in both texts.
     The question and the SQL are changed consistently, so the SQL stays a correct copy."""
