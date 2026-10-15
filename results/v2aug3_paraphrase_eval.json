@@ -1,0 +1,1261 @@
+{
+  "summary": {
+    "n": 108,
+    "exec_accuracy": 0.37962962962962965,
+    "exact_match": 0.37962962962962965,
+    "valid_sql": 0.9722222222222222,
+    "avg_seconds": 0.5382474020675376,
+    "tokens_per_second": 157.6619056313866,
+    "macro_exec_accuracy": 0.35833333333333334,
+    "parameters": 851968,
+    "checkpoint_mb": 9.996876,
+    "run_name": "v2aug3",
+    "data": "v2",
+    "split": "paraphrase",
+    "device": "cuda"
+  },
+  "per_template": {
+    "SELECT AVG(price) FROM products WHERE category = ?": {
+      "n": 4,
+      "exec_accuracy": 0.25,
+      "exact_match": 0.25,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.41997820138931274,
+      "tokens_per_second": 158.93682048065125
+    },
+    "SELECT COUNT(*) FROM customers WHERE city = ?": {
+      "n": 6,
+      "exec_accuracy": 0.8333333333333334,
+      "exact_match": 0.8333333333333334,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.41465699672698975,
+      "tokens_per_second": 151.93280349126536
+    },
+    "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = ? AND customers.city = ?": {
+      "n": 6,
+      "exec_accuracy": 0.3333333333333333,
+      "exact_match": 0.3333333333333333,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.8761475086212158,
+      "tokens_per_second": 159.79044467103094
+    },
+    "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = ?": {
+      "n": 6,
+      "exec_accuracy": 0.0,
+      "exact_match": 0.0,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.661786953608195,
+      "tokens_per_second": 160.67607974678666
+    },
+    "SELECT COUNT(*) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = ?": {
+      "n": 6,
+      "exec_accuracy": 0.0,
+      "exact_match": 0.0,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.6995745897293091,
+      "tokens_per_second": 161.52673590349218
+    },
+    "SELECT COUNT(*) FROM orders WHERE order_date = ?": {
+      "n": 6,
+      "exec_accuracy": 0.5,
+      "exact_match": 0.5,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.38945921262105304,
+      "tokens_per_second": 154.0597784199304
+    },
+    "SELECT COUNT(*) FROM orders WHERE order_date > ?": {
+      "n": 6,
+      "exec_accuracy": 1.0,
+      "exact_match": 1.0,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.3725651105244954,
+      "tokens_per_second": 161.04567578948087
+    },
+    "SELECT COUNT(*) FROM products WHERE category = ?": {
+      "n": 4,
+      "exec_accuracy": 0.5,
+      "exact_match": 0.5,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.5371360182762146,
+      "tokens_per_second": 159.17755855283724
+    },
+    "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = ?": {
+      "n": 6,
+      "exec_accuracy": 0.16666666666666666,
+      "exact_match": 0.16666666666666666,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.6335020462671915,
+      "tokens_per_second": 151.27549137057372
+    },
+    "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = ?": {
+      "n": 6,
+      "exec_accuracy": 0.5,
+      "exact_match": 0.5,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.7331644296646118,
+      "tokens_per_second": 152.98978254847637
+    },
+    "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = ?": {
+      "n": 6,
+      "exec_accuracy": 0.5,
+      "exact_match": 0.5,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.7165186405181885,
+      "tokens_per_second": 159.5678421578078
+    },
+    "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = ?": {
+      "n": 6,
+      "exec_accuracy": 0.8333333333333334,
+      "exact_match": 0.8333333333333334,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.6693660815556844,
+      "tokens_per_second": 155.12189248073733
+    },
+    "SELECT customers.city, COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = ? GROUP BY customers.city": {
+      "n": 4,
+      "exec_accuracy": 0.0,
+      "exact_match": 0.0,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.8348392248153687,
+      "tokens_per_second": 158.71319418335122
+    },
+    "SELECT name FROM customers WHERE city = ?": {
+      "n": 6,
+      "exec_accuracy": 0.5,
+      "exact_match": 0.5,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.3946982224782308,
+      "tokens_per_second": 157.92656207558997
+    },
+    "SELECT name FROM products WHERE category = ?": {
+      "n": 4,
+      "exec_accuracy": 0.0,
+      "exact_match": 0.0,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.498537540435791,
+      "tokens_per_second": 160.46935990029738
+    },
+    "SELECT name FROM products WHERE category = ? ORDER BY price ASC LIMIT ?": {
+      "n": 4,
+      "exec_accuracy": 0.0,
+      "exact_match": 0.0,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.5302873849868774,
+      "tokens_per_second": 153.21880606684735
+    },
+    "SELECT name FROM products WHERE category = ? ORDER BY price DESC LIMIT ?": {
+      "n": 4,
+      "exec_accuracy": 0.25,
+      "exact_match": 0.25,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.5060058236122131,
+      "tokens_per_second": 160.0772090363842
+    },
+    "SELECT name FROM products WHERE price < ?": {
+      "n": 6,
+      "exec_accuracy": 0.5,
+      "exact_match": 0.5,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.27565773328145343,
+      "tokens_per_second": 160.22284642953002
+    },
+    "SELECT name FROM products WHERE price > ?": {
+      "n": 6,
+      "exec_accuracy": 0.5,
+      "exact_match": 0.5,
+      "valid_sql": 0.5,
+      "avg_seconds": 0.2850995461146037,
+      "tokens_per_second": 162.51633496009973
+    },
+    "SELECT price FROM products WHERE name = ?": {
+      "n": 6,
+      "exec_accuracy": 0.0,
+      "exact_match": 0.0,
+      "valid_sql": 1.0,
+      "avg_seconds": 0.3484000364939372,
+      "tokens_per_second": 157.3861297063542
+    }
+  },
+  "examples": [
+    {
+      "question": "buyers of grater, please list them",
+      "gold": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'grater'",
+      "predicted": "SELECT COUNT(*) FROM products WHERE category = 'grater'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.5184032917022705,
+      "n_tokens": 56
+    },
+    {
+      "question": "buyers of ladle, please list them",
+      "gold": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'ladle'",
+      "predicted": "SELECT COUNT(*) FROM products WHERE category = 'ladle'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.33022189140319824,
+      "n_tokens": 55
+    },
+    {
+      "question": "buyers of scratcher, please list them",
+      "gold": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'scratcher'",
+      "predicted": "SELECT AVG(price) FROM products WHERE category = 'scratcher'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.3916611671447754,
+      "n_tokens": 61
+    },
+    {
+      "question": "clothing item with the biggest price",
+      "gold": "SELECT name FROM products WHERE category = 'clothing' ORDER BY price DESC LIMIT 1",
+      "predicted": "SELECT name FROM products WHERE category = 'biggest' ORDER BY price DESC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.5147154331207275,
+      "n_tokens": 81
+    },
+    {
+      "question": "clothing item with the smallest price",
+      "gold": "SELECT name FROM products WHERE category = 'clothing' ORDER BY price ASC LIMIT 1",
+      "predicted": "SELECT name FROM products WHERE category = 'smallest' ORDER BY price ASC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.5166306495666504,
+      "n_tokens": 81
+    },
+    {
+      "question": "customer headcount for indore",
+      "gold": "SELECT COUNT(*) FROM customers WHERE city = 'indore'",
+      "predicted": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'indore'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7146697044372559,
+      "n_tokens": 112
+    },
+    {
+      "question": "customer headcount for patna",
+      "gold": "SELECT COUNT(*) FROM customers WHERE city = 'patna'",
+      "predicted": "SELECT COUNT(*) FROM customers WHERE city = 'patna'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.3698616027832031,
+      "n_tokens": 52
+    },
+    {
+      "question": "customer headcount for ranchi",
+      "gold": "SELECT COUNT(*) FROM customers WHERE city = 'ranchi'",
+      "predicted": "SELECT COUNT(*) FROM customers WHERE city = 'ranchi'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.39797115325927734,
+      "n_tokens": 53
+    },
+    {
+      "question": "customers located in indore, list them",
+      "gold": "SELECT name FROM customers WHERE city = 'indore'",
+      "predicted": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'list'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7136712074279785,
+      "n_tokens": 110
+    },
+    {
+      "question": "customers located in ranchi, list them",
+      "gold": "SELECT name FROM customers WHERE city = 'ranchi'",
+      "predicted": "SELECT COUNT(*) FROM products WHERE category = 'ranchist'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.35918188095092773,
+      "n_tokens": 58
+    },
+    {
+      "question": "customers located in varanasi, list them",
+      "gold": "SELECT name FROM customers WHERE city = 'varanasi'",
+      "predicted": "SELECT COUNT(*) FROM products WHERE category = 'varanasi'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.38106226921081543,
+      "n_tokens": 58
+    },
+    {
+      "question": "enumerate the items filed under clothing",
+      "gold": "SELECT name FROM products WHERE category = 'clothing'",
+      "predicted": "SELECT name FROM products WHERE category = 'items' ORDER BY price DESC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.4925649166107178,
+      "n_tokens": 79
+    },
+    {
+      "question": "enumerate the items filed under kitchen",
+      "gold": "SELECT name FROM products WHERE category = 'kitchen'",
+      "predicted": "SELECT name FROM products WHERE category = 'kitems' ORDER BY price DESC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.5099160671234131,
+      "n_tokens": 80
+    },
+    {
+      "question": "give me the average of all clothing prices",
+      "gold": "SELECT AVG(price) FROM products WHERE category = 'clothing'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'all'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.6880893707275391,
+      "n_tokens": 110
+    },
+    {
+      "question": "give me the average of all kitchen prices",
+      "gold": "SELECT AVG(price) FROM products WHERE category = 'kitchen'",
+      "predicted": "SELECT AVG(price) FROM products WHERE category = 'kitchen'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.3875720500946045,
+      "n_tokens": 59
+    },
+    {
+      "question": "how large is the clothing catalogue, in number of products?",
+      "gold": "SELECT COUNT(*) FROM products WHERE category = 'clothing'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'number'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7032527923583984,
+      "n_tokens": 113
+    },
+    {
+      "question": "how large is the kitchen catalogue, in number of products?",
+      "gold": "SELECT COUNT(*) FROM products WHERE category = 'kitchen'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'kitchen'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7292850017547607,
+      "n_tokens": 114
+    },
+    {
+      "question": "how many clothing purchases were made by people in indore?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'clothing' AND customers.city = 'indore'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'purching'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7507486343383789,
+      "n_tokens": 115
+    },
+    {
+      "question": "how many kitchen purchases were made by people in patna?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'kitchen' AND customers.city = 'patna'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'kitchen'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7327759265899658,
+      "n_tokens": 114
+    },
+    {
+      "question": "how many kitchen purchases were made by people in ranchi?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'kitchen' AND customers.city = 'ranchi'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'kitchen'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.6921725273132324,
+      "n_tokens": 114
+    },
+    {
+      "question": "how many of our customers are located in indore?",
+      "gold": "SELECT COUNT(*) FROM customers WHERE city = 'indore'",
+      "predicted": "SELECT COUNT(*) FROM customers WHERE city = 'indore'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.33424901962280273,
+      "n_tokens": 53
+    },
+    {
+      "question": "how many of our customers are located in ranchi?",
+      "gold": "SELECT COUNT(*) FROM customers WHERE city = 'ranchi'",
+      "predicted": "SELECT COUNT(*) FROM customers WHERE city = 'ranchi'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.33358049392700195,
+      "n_tokens": 53
+    },
+    {
+      "question": "how many of our customers are located in varanasi?",
+      "gold": "SELECT COUNT(*) FROM customers WHERE city = 'varanasi'",
+      "predicted": "SELECT COUNT(*) FROM customers WHERE city = 'varanasi'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.33761000633239746,
+      "n_tokens": 55
+    },
+    {
+      "question": "how many orders arrived later than 2026-02-05?",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-05'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-05'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.3904902935028076,
+      "n_tokens": 60
+    },
+    {
+      "question": "how many orders arrived later than 2026-05-30?",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-30'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-30'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.37325024604797363,
+      "n_tokens": 60
+    },
+    {
+      "question": "how many orders arrived later than 2026-06-20?",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-20'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-20'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.3630857467651367,
+      "n_tokens": 60
+    },
+    {
+      "question": "how many orders were received on the date 2026-02-04?",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date = '2026-02-04'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-04'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.38998937606811523,
+      "n_tokens": 60
+    },
+    {
+      "question": "how many orders were received on the date 2026-05-01?",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date = '2026-05-01'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-01'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.43300914764404297,
+      "n_tokens": 60
+    },
+    {
+      "question": "how many orders were received on the date 2026-06-20?",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date = '2026-06-20'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-06-20'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.3843836784362793,
+      "n_tokens": 60
+    },
+    {
+      "question": "how many pieces of facewash have we sold altogether?",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'facewash'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'facewash'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.7521440982818604,
+      "n_tokens": 115
+    },
+    {
+      "question": "how many pieces of grater have we sold altogether?",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'grater'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'grater'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.7470085620880127,
+      "n_tokens": 113
+    },
+    {
+      "question": "how many pieces of ladle have we sold altogether?",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'ladle'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'ladle'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.7234866619110107,
+      "n_tokens": 112
+    },
+    {
+      "question": "how many purchases has dakepus made so far?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'dakepus'",
+      "predicted": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'purchases' AND customers.city = 'far'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 1.2185719013214111,
+      "n_tokens": 194
+    },
+    {
+      "question": "how many purchases has sifis made so far?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'sifis'",
+      "predicted": "SELECT COUNT(*) FROM products WHERE category = 'far'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.3276207447052002,
+      "n_tokens": 53
+    },
+    {
+      "question": "how many purchases has zamu made so far?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'zamu'",
+      "predicted": "SELECT COUNT(*) FROM products WHERE category = 'zamu'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.32817792892456055,
+      "n_tokens": 54
+    },
+    {
+      "question": "how often has atlas been purchased?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'atlas'",
+      "predicted": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'atlas'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 1.0662660598754883,
+      "n_tokens": 174
+    },
+    {
+      "question": "how often has facewash been purchased?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'facewash'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'facewash'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7095212936401367,
+      "n_tokens": 115
+    },
+    {
+      "question": "how often has saw been purchased?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'saw'",
+      "predicted": "SELECT COUNT(*) FROM products WHERE category = 'saw'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.32732224464416504,
+      "n_tokens": 53
+    },
+    {
+      "question": "indore buyers: how many clothing orders?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'clothing' AND customers.city = 'indore'",
+      "predicted": "SELECT COUNT(*) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'indore'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.6656157970428467,
+      "n_tokens": 108
+    },
+    {
+      "question": "items that are cheaper than 1900, which are they?",
+      "gold": "SELECT name FROM products WHERE price < 1900",
+      "predicted": "SELECT name FROM products WHERE price > 1900",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.28044676780700684,
+      "n_tokens": 45
+    },
+    {
+      "question": "items that are cheaper than 400, which are they?",
+      "gold": "SELECT name FROM products WHERE price < 400",
+      "predicted": "SELECT name FROM products WHERE price > 400",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.28018712997436523,
+      "n_tokens": 44
+    },
+    {
+      "question": "items that are cheaper than 750, which are they?",
+      "gold": "SELECT name FROM products WHERE price < 750",
+      "predicted": "SELECT name FROM products WHERE price > 750",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.26579785346984863,
+      "n_tokens": 44
+    },
+    {
+      "question": "items whose price tag is beyond 1900",
+      "gold": "SELECT name FROM products WHERE price > 1900",
+      "predicted": "SELECT name FROM products WHERE price y y > 1900",
+      "exact": false,
+      "valid": false,
+      "exec_correct": false,
+      "seconds": 0.30305957794189453,
+      "n_tokens": 49
+    },
+    {
+      "question": "items whose price tag is beyond 400",
+      "gold": "SELECT name FROM products WHERE price > 400",
+      "predicted": "SELECT name FROM products WHERE price y y > 400",
+      "exact": false,
+      "valid": false,
+      "exec_correct": false,
+      "seconds": 0.2882051467895508,
+      "n_tokens": 48
+    },
+    {
+      "question": "items whose price tag is beyond 750",
+      "gold": "SELECT name FROM products WHERE price > 750",
+      "predicted": "SELECT name FROM products WHERE price y y = 750",
+      "exact": false,
+      "valid": false,
+      "exec_correct": false,
+      "seconds": 0.3145003318786621,
+      "n_tokens": 48
+    },
+    {
+      "question": "kitchen item with the biggest price",
+      "gold": "SELECT name FROM products WHERE category = 'kitchen' ORDER BY price DESC LIMIT 1",
+      "predicted": "SELECT name FROM products WHERE category = 'biggest' ORDER BY price DESC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.4915940761566162,
+      "n_tokens": 81
+    },
+    {
+      "question": "kitchen item with the smallest price",
+      "gold": "SELECT name FROM products WHERE category = 'kitchen' ORDER BY price ASC LIMIT 1",
+      "predicted": "SELECT name FROM products WHERE category = 'smallest' ORDER BY price ASC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.5534791946411133,
+      "n_tokens": 81
+    },
+    {
+      "question": "mean price for the clothing group",
+      "gold": "SELECT AVG(price) FROM products WHERE category = 'clothing'",
+      "predicted": "SELECT price FROM products WHERE name = 'group'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.2903294563293457,
+      "n_tokens": 48
+    },
+    {
+      "question": "mean price for the kitchen group",
+      "gold": "SELECT AVG(price) FROM products WHERE category = 'kitchen'",
+      "predicted": "SELECT price FROM products WHERE name = 'kitchen'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.3139219284057617,
+      "n_tokens": 50
+    },
+    {
+      "question": "number of different products listed under clothing",
+      "gold": "SELECT COUNT(*) FROM products WHERE category = 'clothing'",
+      "predicted": "SELECT COUNT(*) FROM products WHERE category = 'clothing'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.3683440685272217,
+      "n_tokens": 58
+    },
+    {
+      "question": "number of different products listed under kitchen",
+      "gold": "SELECT COUNT(*) FROM products WHERE category = 'kitchen'",
+      "predicted": "SELECT COUNT(*) FROM products WHERE category = 'kitchen'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.34766221046447754,
+      "n_tokens": 57
+    },
+    {
+      "question": "orders count for the day 2026-02-04",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date = '2026-02-04'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date = '2026-02-04'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.3707301616668701,
+      "n_tokens": 60
+    },
+    {
+      "question": "orders count for the day 2026-02-05",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date = '2026-02-05'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date = '2026-02-05'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.38955163955688477,
+      "n_tokens": 60
+    },
+    {
+      "question": "orders count for the day 2026-05-02",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date = '2026-05-02'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date = '2026-05-02'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.369091272354126,
+      "n_tokens": 60
+    },
+    {
+      "question": "orders from after 2026-02-05: how many?",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-05'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-02-05'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.36872148513793945,
+      "n_tokens": 60
+    },
+    {
+      "question": "orders from after 2026-04-25: how many?",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-04-25'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-04-25'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.369279146194458,
+      "n_tokens": 60
+    },
+    {
+      "question": "orders from after 2026-05-30: how many?",
+      "gold": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-30'",
+      "predicted": "SELECT COUNT(*) FROM orders WHERE order_date > '2026-05-30'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.3705637454986572,
+      "n_tokens": 60
+    },
+    {
+      "question": "overall units shipped of grater",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'grater'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'grater'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.7136399745941162,
+      "n_tokens": 113
+    },
+    {
+      "question": "overall units shipped of scratcher",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'scratcher'",
+      "predicted": "SELECT COUNT(*) FROM products WHERE category = 'scratcher'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.38457489013671875,
+      "n_tokens": 59
+    },
+    {
+      "question": "overall units shipped of yoyo",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'yoyo'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'yoyo'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.6953423023223877,
+      "n_tokens": 111
+    },
+    {
+      "question": "patna buyers: how many clothing orders?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'clothing' AND customers.city = 'patna'",
+      "predicted": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'clothing' AND customers.city = 'patna'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 1.206888198852539,
+      "n_tokens": 195
+    },
+    {
+      "question": "patna buyers: how many kitchen orders?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'kitchen' AND customers.city = 'patna'",
+      "predicted": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'kitchen' AND customers.city = 'patna'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 1.208683967590332,
+      "n_tokens": 194
+    },
+    {
+      "question": "per-city totals of clothing orders",
+      "gold": "SELECT customers.city, COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'clothing' GROUP BY customers.city",
+      "predicted": "SELECT SUM(quantity) FROM orders WHERE order_date > 'clothing'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.3994331359863281,
+      "n_tokens": 63
+    },
+    {
+      "question": "per-city totals of kitchen orders",
+      "gold": "SELECT customers.city, COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'kitchen' GROUP BY customers.city",
+      "predicted": "SELECT SUM(quantity) FROM orders WHERE order_date = 'kitchen'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.3870415687561035,
+      "n_tokens": 62
+    },
+    {
+      "question": "perfume price please",
+      "gold": "SELECT price FROM products WHERE name = 'perfume'",
+      "predicted": "SELECT price FROM products WHERE name = 'please'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.29810357093811035,
+      "n_tokens": 49
+    },
+    {
+      "question": "saw price please",
+      "gold": "SELECT price FROM products WHERE name = 'saw'",
+      "predicted": "SELECT price FROM products WHERE name = 'please'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.3115711212158203,
+      "n_tokens": 49
+    },
+    {
+      "question": "scarecrow price please",
+      "gold": "SELECT price FROM products WHERE name = 'scarecrow'",
+      "predicted": "SELECT price FROM products WHERE name = 'scarow'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.32157373428344727,
+      "n_tokens": 49
+    },
+    {
+      "question": "show me the purchase history of dofeger",
+      "gold": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'dofeger'",
+      "predicted": "SELECT price FROM products WHERE name = 'dofeger'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.33605098724365234,
+      "n_tokens": 50
+    },
+    {
+      "question": "show me the purchase history of kofeki",
+      "gold": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'kofeki'",
+      "predicted": "SELECT price FROM products WHERE name = 'kofeki'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.36287856101989746,
+      "n_tokens": 49
+    },
+    {
+      "question": "show me the purchase history of sufuno",
+      "gold": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'sufuno'",
+      "predicted": "SELECT price FROM products WHERE name = 'sufuno'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.32498717308044434,
+      "n_tokens": 49
+    },
+    {
+      "question": "split clothing orders up by city",
+      "gold": "SELECT customers.city, COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'clothing' GROUP BY customers.city",
+      "predicted": "SELECT customers.city, COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'city' GROUP BY customers.city",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 1.2683346271514893,
+      "n_tokens": 202
+    },
+    {
+      "question": "split kitchen orders up by city",
+      "gold": "SELECT customers.city, COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'kitchen' GROUP BY customers.city",
+      "predicted": "SELECT customers.city, COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.category = 'orden' GROUP BY customers.city",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 1.2845475673675537,
+      "n_tokens": 203
+    },
+    {
+      "question": "total ordered quantity for customer liru",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'liru'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'liru'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.7256793975830078,
+      "n_tokens": 115
+    },
+    {
+      "question": "total ordered quantity for customer sufuno",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'sufuno'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'sufuno'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.7391047477722168,
+      "n_tokens": 117
+    },
+    {
+      "question": "total ordered quantity for customer vigoyin",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'vigoyin'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'vigoyin'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.726433515548706,
+      "n_tokens": 118
+    },
+    {
+      "question": "total orders that involve facewash",
+      "gold": "SELECT COUNT(*) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'facewash'",
+      "predicted": "SELECT COUNT(*) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'total'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.6771948337554932,
+      "n_tokens": 107
+    },
+    {
+      "question": "total orders that involve folder",
+      "gold": "SELECT COUNT(*) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'folder'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'total'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.6888134479522705,
+      "n_tokens": 112
+    },
+    {
+      "question": "total orders that involve scarecrow",
+      "gold": "SELECT COUNT(*) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'scarecrow'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'totarecrow'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7283296585083008,
+      "n_tokens": 117
+    },
+    {
+      "question": "what do we sell that is priced above 1900?",
+      "gold": "SELECT name FROM products WHERE price > 1900",
+      "predicted": "SELECT name FROM products WHERE price > 1900",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.2749004364013672,
+      "n_tokens": 45
+    },
+    {
+      "question": "what do we sell that is priced above 750?",
+      "gold": "SELECT name FROM products WHERE price > 750",
+      "predicted": "SELECT name FROM products WHERE price > 750",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.2653522491455078,
+      "n_tokens": 44
+    },
+    {
+      "question": "what do we sell that is priced above 950?",
+      "gold": "SELECT name FROM products WHERE price > 950",
+      "predicted": "SELECT name FROM products WHERE price > 950",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.26457953453063965,
+      "n_tokens": 44
+    },
+    {
+      "question": "what do we stock in the clothing section?",
+      "gold": "SELECT name FROM products WHERE category = 'clothing'",
+      "predicted": "SELECT name FROM products WHERE category = 'clothing' ORDER BY price ASC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.5119638442993164,
+      "n_tokens": 81
+    },
+    {
+      "question": "what do we stock in the kitchen section?",
+      "gold": "SELECT name FROM products WHERE category = 'kitchen'",
+      "predicted": "SELECT name FROM products WHERE category = 'kitchen' ORDER BY price ASC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.4797053337097168,
+      "n_tokens": 80
+    },
+    {
+      "question": "what is the most budget friendly clothing product?",
+      "gold": "SELECT name FROM products WHERE category = 'clothing' ORDER BY price ASC LIMIT 1",
+      "predicted": "SELECT name FROM products WHERE category = 'friendly' ORDER BY price DESC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.5144116878509521,
+      "n_tokens": 82
+    },
+    {
+      "question": "what is the most budget friendly kitchen product?",
+      "gold": "SELECT name FROM products WHERE category = 'kitchen' ORDER BY price ASC LIMIT 1",
+      "predicted": "SELECT name FROM products WHERE category = 'kiendly' ORDER BY price DESC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.536628007888794,
+      "n_tokens": 81
+    },
+    {
+      "question": "what is the overall number of units dohire has ordered?",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'dohire'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'units'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.6963191032409668,
+      "n_tokens": 112
+    },
+    {
+      "question": "what is the overall number of units jijuyus has ordered?",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'jijuyus'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'units'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7024514675140381,
+      "n_tokens": 112
+    },
+    {
+      "question": "what is the overall number of units zesone has ordered?",
+      "gold": "SELECT SUM(quantity) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'zesone'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'units'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7091236114501953,
+      "n_tokens": 112
+    },
+    {
+      "question": "what is the top shelf clothing product by price?",
+      "gold": "SELECT name FROM products WHERE category = 'clothing' ORDER BY price DESC LIMIT 1",
+      "predicted": "SELECT name FROM products WHERE category = 'product' ORDER BY price DESC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.5216779708862305,
+      "n_tokens": 81
+    },
+    {
+      "question": "what is the top shelf kitchen product by price?",
+      "gold": "SELECT name FROM products WHERE category = 'kitchen' ORDER BY price DESC LIMIT 1",
+      "predicted": "SELECT name FROM products WHERE category = 'kitchen' ORDER BY price DESC LIMIT 1",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.4960358142852783,
+      "n_tokens": 81
+    },
+    {
+      "question": "what is the total number of orders pugu has placed?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'pugu'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'pugu'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.686882734298706,
+      "n_tokens": 111
+    },
+    {
+      "question": "what is the total number of orders sifis has placed?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'sifis'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'sifis'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7005593776702881,
+      "n_tokens": 112
+    },
+    {
+      "question": "what is the total number of orders vigoyin has placed?",
+      "gold": "SELECT COUNT(*) FROM orders JOIN customers ON orders.customer_id = customers.id WHERE customers.name = 'vigoyin'",
+      "predicted": "SELECT SUM(quantity) FROM orders JOIN products ON orders.product_id = products.id WHERE products.name = 'vigoyin'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.7089090347290039,
+      "n_tokens": 114
+    },
+    {
+      "question": "what would a saw set me back?",
+      "gold": "SELECT price FROM products WHERE name = 'saw'",
+      "predicted": "SELECT name FROM products WHERE category = 'saw'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.31720685958862305,
+      "n_tokens": 49
+    },
+    {
+      "question": "what would a scarecrow set me back?",
+      "gold": "SELECT price FROM products WHERE name = 'scarecrow'",
+      "predicted": "SELECT name FROM products WHERE category = 'scarecrow' ORDER BY price DESC LIMIT 1",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.5124876499176025,
+      "n_tokens": 83
+    },
+    {
+      "question": "what would a yoyo set me back?",
+      "gold": "SELECT price FROM products WHERE name = 'yoyo'",
+      "predicted": "SELECT name FROM products WHERE category = 'yoyo'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.32945728302001953,
+      "n_tokens": 50
+    },
+    {
+      "question": "which of our customers are based in patna?",
+      "gold": "SELECT name FROM customers WHERE city = 'patna'",
+      "predicted": "SELECT name FROM customers WHERE city = 'patna'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.29802775382995605,
+      "n_tokens": 48
+    },
+    {
+      "question": "which of our customers are based in ranchi?",
+      "gold": "SELECT name FROM customers WHERE city = 'ranchi'",
+      "predicted": "SELECT name FROM customers WHERE city = 'ranchi'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.2971045970916748,
+      "n_tokens": 49
+    },
+    {
+      "question": "which of our customers are based in varanasi?",
+      "gold": "SELECT name FROM customers WHERE city = 'varanasi'",
+      "predicted": "SELECT name FROM customers WHERE city = 'varanasi'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.3191416263580322,
+      "n_tokens": 51
+    },
+    {
+      "question": "which products are priced beneath 400?",
+      "gold": "SELECT name FROM products WHERE price < 400",
+      "predicted": "SELECT name FROM products WHERE price < 400",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.2817814350128174,
+      "n_tokens": 44
+    },
+    {
+      "question": "which products are priced beneath 750?",
+      "gold": "SELECT name FROM products WHERE price < 750",
+      "predicted": "SELECT name FROM products WHERE price < 750",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.27160048484802246,
+      "n_tokens": 44
+    },
+    {
+      "question": "which products are priced beneath 950?",
+      "gold": "SELECT name FROM products WHERE price < 950",
+      "predicted": "SELECT name FROM products WHERE price < 950",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 0.27413272857666016,
+      "n_tokens": 44
+    },
+    {
+      "question": "which things have been purchased by biro?",
+      "gold": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'biro'",
+      "predicted": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'biro'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 1.0762536525726318,
+      "n_tokens": 173
+    },
+    {
+      "question": "which things have been purchased by gupozen?",
+      "gold": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'gupozen'",
+      "predicted": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'gupozen'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 1.1463325023651123,
+      "n_tokens": 176
+    },
+    {
+      "question": "which things have been purchased by pakipim?",
+      "gold": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'pakipim'",
+      "predicted": "SELECT DISTINCT products.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE customers.name = 'pakipim'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 1.1524837017059326,
+      "n_tokens": 176
+    },
+    {
+      "question": "who are the people that purchased folder?",
+      "gold": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'folder'",
+      "predicted": "SELECT name FROM products WHERE category = 'people'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 0.33095526695251465,
+      "n_tokens": 52
+    },
+    {
+      "question": "who are the people that purchased perfume?",
+      "gold": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'perfume'",
+      "predicted": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'people'",
+      "exact": false,
+      "valid": true,
+      "exec_correct": false,
+      "seconds": 1.1411559581756592,
+      "n_tokens": 175
+    },
+    {
+      "question": "who are the people that purchased shampoo?",
+      "gold": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'shampoo'",
+      "predicted": "SELECT DISTINCT customers.name FROM orders JOIN customers ON orders.customer_id = customers.id JOIN products ON orders.product_id = products.id WHERE products.name = 'shampoo'",
+      "exact": true,
+      "valid": true,
+      "exec_correct": true,
+      "seconds": 1.0886147022247314,
+      "n_tokens": 176
+    }
+  ]
+}
