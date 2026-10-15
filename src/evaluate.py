@@ -77,7 +77,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--run_name", default="base")
     parser.add_argument("--data", default="v1", choices=["v1", "v2"])
-    parser.add_argument("--split", default="val", choices=["train", "val", "test"])
+    parser.add_argument("--split", default="val", choices=["train", "val", "test", "paraphrase"])
     parser.add_argument("--ckpt", default=None, help="checkpoint path (default: best.pt of the run)")
     parser.add_argument("--limit", type=int, default=0, help="evaluate a random subset of this size")
     args = parser.parse_args()
