@@ -1,0 +1,20 @@
+{
+  "From scratch (852k)": {
+    "params": 851968,
+    "disk_mb": 9.996876,
+    "mean_s": 0.8242929407999782,
+    "median_s": 0.6742580134999798,
+    "tokens_per_s": 121.25543608683377,
+    "peak_gpu_mb": null,
+    "n": 20
+  },
+  "LoRA Qwen2.5-0.5B": {
+    "params": 494032768,
+    "disk_mb": 1023.30264,
+    "mean_s": 4.983772712125045,
+    "median_s": 4.6225363565000634,
+    "tokens_per_s": 5.041361524949415,
+    "peak_gpu_mb": null,
+    "n": 8
+  }
+}

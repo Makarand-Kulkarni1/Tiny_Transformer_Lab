@@ -1,0 +1,56 @@
+[
+  {
+    "label": "fp32",
+    "bits": 32,
+    "size_mb": 3.407872,
+    "weight_error": 0.0,
+    "val_loss": 0.00017376039815962914,
+    "test_acc": 0.985,
+    "para_acc": 0.37962962962962965
+  },
+  {
+    "label": "int8",
+    "bits": 8,
+    "size_mb": 1.038508,
+    "weight_error": 0.006964370372281997,
+    "val_loss": 0.00017431753683319907,
+    "test_acc": 0.985,
+    "para_acc": 0.3888888888888889
+  },
+  {
+    "label": "int6",
+    "bits": 6,
+    "size_mb": 0.8395,
+    "weight_error": 0.02849480688744836,
+    "val_loss": 0.0001748920230410578,
+    "test_acc": 0.98,
+    "para_acc": 0.3888888888888889
+  },
+  {
+    "label": "int4",
+    "bits": 4,
+    "size_mb": 0.640492,
+    "weight_error": 0.12631188305799365,
+    "val_loss": 0.00018852104642234124,
+    "test_acc": 0.98,
+    "para_acc": 0.3888888888888889
+  },
+  {
+    "label": "int3",
+    "bits": 3,
+    "size_mb": 0.540988,
+    "weight_error": 0.29478766581256316,
+    "val_loss": 0.00048078719412889833,
+    "test_acc": 0.98,
+    "para_acc": 0.3888888888888889
+  },
+  {
+    "label": "int2",
+    "bits": 2,
+    "size_mb": 0.441484,
+    "weight_error": 0.7916507299195941,
+    "val_loss": 4.708073611277411,
+    "test_acc": 0.0,
+    "para_acc": 0.0
+  }
+]
