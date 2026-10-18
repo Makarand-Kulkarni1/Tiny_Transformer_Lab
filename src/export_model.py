@@ -1,5 +1,6 @@
 import argparse
 import random
+from pathlib import Path
 
 import torch
 
@@ -11,16 +12,21 @@ from src.train import ROOT, load_jsonl, load_model
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--run_name", default="v2aug3")
+    parser.add_argument("--ckpt", default=None, help="path to the training checkpoint (default: saved_models/<run>/best.pt)")
     args = parser.parse_args()
 
-    src_path = ROOT / "checkpoints" / args.run_name / "best.pt"
+    src_path = Path(args.ckpt) if args.ckpt else ROOT / "saved_models" / args.run_name / "best.pt"
+    if not src_path.exists():
+        raise SystemExit(f"checkpoint not found: {src_path}\n"
+                         "Download v2aug3/best.pt from Drive into saved_models/v2aug3/")
+
     ckpt = torch.load(src_path, map_location="cpu")
     slim = {
         "model_state": {k: v for k, v in ckpt["model_state"].items() if not k.endswith(".mask")},
         "model_config": ckpt["model_config"],
         "chars": ckpt["chars"],
     }
-    out = ROOT / "models" / "tiny_sql.pt"
+    out = ROOT / "saved_models" / "tiny_sql.pt"
     out.parent.mkdir(exist_ok=True)
     torch.save(slim, out)
     print(f"saved {out} ({out.stat().st_size / 1e6:.2f} MB; original {src_path.stat().st_size / 1e6:.2f} MB)")

@@ -18,3 +18,4 @@ __pycache__/
 .ipynb_checkpoints/
 "@ | Set-Content .gitignore
 results/*_cache.jsonl
+!saved_models/tiny_sql.pt
